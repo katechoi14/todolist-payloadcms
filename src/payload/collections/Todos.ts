@@ -17,6 +17,10 @@ const Todos: CollectionConfig = {
       name: 'completed',
       type: 'checkbox',
     },
+    {
+      name: 'date',
+      type: 'date',
+    },
   ],
 };
 

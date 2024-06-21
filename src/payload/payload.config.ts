@@ -10,7 +10,8 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
-import Todos from './collections/Todos';
+import Todos from './collections/Todos'
+import todos from '../app/_api/todos'
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
 import { Media } from './collections/Media'
@@ -84,6 +85,9 @@ export default buildConfig({
       handler: seed,
     },
   ],
+  express: (app) => {
+    app.use('/api/todos', todos);
+  },
   plugins: [
     redirects({
       collections: ['pages', 'posts'],
@@ -98,4 +102,4 @@ export default buildConfig({
     }),
     payloadCloud(),
   ],
-})
+});
