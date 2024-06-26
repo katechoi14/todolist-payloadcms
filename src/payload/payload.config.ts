@@ -10,8 +10,7 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
-import Todos from './collections/Todos'
-import todos from '../app/_api/todos'
+import Tasks from './collections/Tasks'
 import Categories from './collections/Categories'
 import Comments from './collections/Comments'
 import { Media } from './collections/Media'
@@ -66,7 +65,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI,
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Todos],
+  collections: [Pages, Posts, Projects, Media, Categories, Users, Comments, Tasks],
   globals: [Settings, Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -85,9 +84,6 @@ export default buildConfig({
       handler: seed,
     },
   ],
-  express: (app) => {
-    app.use('/api/todos', todos);
-  },
   plugins: [
     redirects({
       collections: ['pages', 'posts'],

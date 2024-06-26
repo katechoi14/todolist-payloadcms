@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import payload from 'payload';
 import path from 'path';
+import { seed } from './payload/seed';
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
