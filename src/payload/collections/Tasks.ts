@@ -3,7 +3,7 @@ import { CollectionConfig } from 'payload/types';
 const Tasks: CollectionConfig = {
   slug: 'tasks',
   access: {
-    create: ({ req: {user}}) => {
+    create: ({ req: {user }}) => {
       return true;
     },
     read: ({ req: {user}}) => {
@@ -18,6 +18,7 @@ const Tasks: CollectionConfig = {
     admin: ({ req: {user}}) => {
       return true;
     },
+    
   },
   fields: [
     {
@@ -39,6 +40,7 @@ const Tasks: CollectionConfig = {
       type: 'date',
     },
   ],
+  
 };
 
 export default Tasks;

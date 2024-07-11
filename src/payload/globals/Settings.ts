@@ -12,17 +12,17 @@ export const Settings: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    {
-      name: 'postsPage',
-      type: 'relationship',
-      relationTo: 'pages',
-      label: 'Posts page',
-    },
-    {
-      name: 'projectsPage',
-      type: 'relationship',
-      relationTo: 'pages',
-      label: 'Projects page',
-    },
+    // {
+    //   name: 'postsPage',
+    //   type: 'relationship',
+    //   relationTo: 'pages',
+    //   label: 'Posts page',
+    // },
+    // {
+    //   name: 'projectsPage',
+    //   type: 'relationship',
+    //   relationTo: 'pages',
+    //   label: 'Projects page',
+    // },
   ],
 }
