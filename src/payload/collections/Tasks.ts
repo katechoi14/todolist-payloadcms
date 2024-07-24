@@ -3,22 +3,17 @@ import { CollectionConfig } from 'payload/types';
 const Tasks: CollectionConfig = {
   slug: 'tasks',
   access: {
-    create: ({ req: {user }}) => {
-      return true;
+    read: ({ req: { user }}) => {
+      if (user) {
+        return {
+          'user.id': { equals: user.id },
+        };
+      }
+      return false;
     },
-    read: ({ req: {user}}) => {
-      return true;
-    },
-    update: ({ req: {user}}) => {
-      return true;
-    },
-    delete: ({ req: {user}}) => {
-      return true;
-    },
-    admin: ({ req: {user}}) => {
-      return true;
-    },
-    
+    create: ({ req: {user }}) => !!user,
+    update: ({ req: {user}}) => !!user,
+    delete: ({ req: {user}}) => !!user,
   },
   fields: [
     {
