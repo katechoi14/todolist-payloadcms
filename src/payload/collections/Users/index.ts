@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 import { hash } from 'bcryptjs';
 import { loginAfterCreate } from './hooks/loginAfterCreate';
+import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserisAdmin';
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -33,13 +34,13 @@ const Users: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeChange: [
-      async ({ data, operation }) => {
-        if (operation === 'create' || (operation === 'update' && data.password)) {
-          data.password = await hash(data.password, 10);
-        }
-      },
-    ],
+    // beforeChange: [
+    //   async ({ data, operation }) => {
+    //     if (operation === 'create' || (operation === 'update' && data.password)) {
+    //       data.password = await hash(data.password, 10);
+    //     }
+    //   },
+    beforeChange: [ensureFirstUserIsAdmin],
     afterChange: [loginAfterCreate], 
   },
 };
